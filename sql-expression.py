@@ -40,7 +40,7 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query 1 - select all records from the "Artist" table
-    select_query = artist_table.select()
+    # select_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from the "Artist" table
     # select_query = artist_table.select().with_only_columns([artist_table.c.Name])
