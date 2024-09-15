@@ -104,15 +104,31 @@ daniel_harris = Programmer(
 # session.commit()
 
 # updating multiple records
-people = session.query(Programmer)
-for person in people:
-    if person.gender == "F":
-        person.gender = "Female"
-    elif person.gender == "M":
-        person.gender = "Male"
+# people = session.query(Programmer)
+# for person in people:
+#     if person.gender == "F":
+#         person.gender = "Female"
+#     elif person.gender == "M":
+#         person.gender = "Male"
+#     else:
+#         print("Gender not defined")
+#     session.commit()
+
+# deleting a single record
+uniqueid = input("Enter a id: ")
+programmer = session.query(Programmer).filter_by(id=uniqueid).first()
+# defensive programming
+if programmer is not None:
+    print("Programmer Found: ", programmer.id)
+    confirmation = input("Are you sure you want to delete this record? (y/n) ")
+    if confirmation.lower() == "y":
+        session.delete(programmer)
+        sesssion.commit()
+        print("Programmer has been deleted")
     else:
-        print("Gender not defined")
-    session.commit()
+        print("Programmer not deleted")
+else:
+    print("No records found")
 
 # query the database to find all Programmers
 programmers = session.query(Programmer)
