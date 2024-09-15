@@ -123,7 +123,7 @@ if programmer is not None:
     confirmation = input("Are you sure you want to delete this record? (y/n) ")
     if confirmation.lower() == "y":
         session.delete(programmer)
-        sesssion.commit()
+        session.commit()
         print("Programmer has been deleted")
     else:
         print("Programmer not deleted")
