@@ -1,8 +1,7 @@
 from sqlalchemy import (
     create_engine, Column, Integer, String
 )
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 
 # executing the instructions from the "chinook" database
@@ -31,13 +30,13 @@ session = Session()
 base.metadata.create_all(db)
 
 
-# creating records on our Progammer table
+# creating records on our Programmer table
 ada_lovelace = Programmer(
-    first_name="Ada",
-    last_name="Lovelace",
-    gender="F",
-    nationality="British",
-    famous_for="First Programmer"
+    first_name = "Ada",
+    last_name = "Lovelace",
+    gender = "F",
+    nationality = "British",
+    famous_for = "First Programmer" 
 )
 
 alan_turing = Programmer(
@@ -82,15 +81,14 @@ tim_berners_lee = Programmer(
 
 # add each instance of our programmers to our session
 # session.add(ada_lovelace)
-# session.add(alan_turing)
-# session.add(grace_hopper)
-# session.add(margaret_hamilton)
-# session.add(bill_gates)
-# session.add(tim_berners_lee)
+session.add(alan_turing)
+session.add(grace_hopper)
+session.add(margaret_hamilton)
+session.add(bill_gates)
+session.add(tim_berners_lee)
 
 # commit our session to the database
-# session.commit()
-
+session.commit()
 
 # query the database to find all Programmers
 programmers = session.query(Programmer)
